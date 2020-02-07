@@ -51,6 +51,22 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    Master <span class="caret"></span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">City</a>
+                                    <a class="dropdown-item" href="#">Category</a>
+                                    <a class="dropdown-item" href="#">Items</a>
+                                    <a class="dropdown-item" href="#">Units</a>
+                                    <a class="dropdown-item" href="#">Customer</a>
+                                    <a class="dropdown-item" href="#">Supplier</a>
+                                </div>
+                            <li>
+                            <li class="nav-item"><a href="#" class="nav-link">Reports</a><li>
+                            <li class="nav-item"><a href="#" class="nav-link">Sales</a><li>
+                            <li class="nav-item"><a href="#" class="nav-link">Purchase</a><li>
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
