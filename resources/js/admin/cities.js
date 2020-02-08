@@ -10,9 +10,9 @@ $(document).ready(function(){
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
         },
         columns: [
-            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-            {data: 'name', name: 'name', width: "85%"},
-            {data: 'action', name: 'action', orderable: false, searchable: false, width: "15%", className: "text-center"},
+            {data: 'DT_RowIndex', name: 'DT_RowIndex',searchable: false, width: "5%"},
+            {data: 'name', name: 'name', width: "65%"},
+            {data: 'action', name: 'action', orderable: false, searchable: false, width: "30%", className: "text-center"},
         ],
         columnDefs: [ {
             targets: 1,
@@ -32,7 +32,7 @@ $(document).ready(function(){
                     type: 'get',
                     data: {
                             id: function(){
-                                return $('#category-id').val();
+                                return $('#city-id').val();
                             }
                     }
                 },
@@ -44,37 +44,31 @@ $(document).ready(function(){
         },
         messages:{
             name : { 
-                required : "Please enter category name.", 
+                required : "Please enter city name.", 
                 minlength: 'Please enter minimum 3 characters',
                 remote: 'The name has already been taken.'},
-            description  : { 
-                required : "Please enter category description.", 
-                minlength: 'Please enter minimum 3 characters'
-            },
         },
-        // onkeyup: false,
-        // onfocusout: false
     });
 
-    $('#addCategoryModal').on('hidden.bs.modal', function () {
-        $('#addCategoryForm')[0].reset();
+    $('#addCityModal').on('hidden.bs.modal', function () {
+        $('#addCityForm')[0].reset();
         $('[name="name"]').removeData("previousValue");
         $('[name="name"]').valid();
-        $("#category-id").val('');
+        $("#city-id").val('');
         validator.resetForm();
-        $("#addCategoryModal .error").removeClass("error");
+        $("#addCityModal .error").removeClass("error");
     });
 
-    $(document).on('submit', '#addCategoryForm', function(e){
+    $(document).on('submit', '#addCityForm', function(e){
         e.preventDefault();
         $.ajaxSetup({
             headers:{
                 'X-CSRF-TOKEN': $("meta[name='csrf-token']").attr('content')
             }
         });
-        if($('#addCategoryForm').valid()) {
+        if($('#addCityForm').valid()) {
             $.ajax({
-                url: baseUrl + '/categories/store',
+                url: baseUrl + '/cities/store',
                 type: "POST",
                 data: new FormData(this),
                 dataType: 'json',
@@ -83,15 +77,13 @@ $(document).ready(function(){
                 processData:false,
                 success: function(data, textStatus, jqXHR) {
                     if(data.status == "success"){
-                        $('#addCategoryForm')[0].reset();
-                        $('#addCategoryModal').modal('hide');
-                        $('#categoryTable').DataTable().ajax.reload();
+                        $('#addCityForm')[0].reset();
+                        $('#addCityModal').modal('hide');
+                        $('#cityTable').DataTable().ajax.reload();
                         swal({
                             title : "Success",
                             text : data.message,
-                            type : "success",
                             icon : "success",
-                            html: true
                         });
                     }
                 },
@@ -103,19 +95,17 @@ $(document).ready(function(){
         }
     });
 
-    $(document).on('click', '#edit-category', function(e){
+    $(document).on('click', '#edit-city', function(e){
         var id = $(this).attr('data-id');
         $.ajax({
-            url: 'categories/edit/'+id,
+            url: 'cities/edit/'+id,
             type: "get",
             success: function(data, textStatus, jqXHR) {
-                if(data.categoryData){
-                    categoryInfo = data.categoryData;
-                    $("#category-id").val(categoryInfo.id);
-                    $("#name").val(categoryInfo.name);
-                    $("#description").val(categoryInfo.description);
-
-                    $('#addCategoryModal').modal('show');
+                if(data.cityData){
+                    cityInfo = data.cityData;
+                    $("#category-id").val(cityInfo.id);
+                    $("#name").val(cityInfo.name);
+                    $('#addCityModal').modal('show');
                 }                
             },
             error: function(response, status, error) {
@@ -123,11 +113,11 @@ $(document).ready(function(){
         });
     });
 
-    $(document).on('click','#categoryDelete', function(){
+    $(document).on('click','#cityDelete', function(){
         var id = $(this).attr('data-id');
         swal({
             title: "Are you sure?",
-            text: "Once deleted, you will not be able to recover this category",
+            text: "Once deleted, you will not be able to recover this city",
             icon: "warning",
             buttons: true,
             dangerMode: true,
@@ -136,7 +126,7 @@ $(document).ready(function(){
             if (willDelete)
             {
                 $.ajax({
-                    url : baseUrl + '/categories/delete/'+id,
+                    url : baseUrl + '/cities/delete/'+id,
                     method:'get',
                     success: function(response)
                     {
@@ -145,7 +135,7 @@ $(document).ready(function(){
                             text: response.message,
                             icon: response.status,
                         }).then(function() {
-                            $('#categoryTable').DataTable().ajax.reload();
+                            $('#cityTable').DataTable().ajax.reload();
                         });
                     }
                 });

@@ -15,6 +15,7 @@ try {
 
 import 'jquery-validation';
 import 'datatables/media/js/jquery.dataTables.min.js';
+import 'sweetalert/dist/sweetalert.min.js';
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

@@ -24,40 +24,39 @@ class CityController extends Controller
 
     public function getData()
     {
-        // $data = City::select('id', 'name')->orderBy('id', 'desc');
-        // return DataTables::of($data)
-        //         ->addIndexColumn()
-        //         ->addColumn('action', function($row){
-        //             $btn = '<a href="javascript:;" id="edit-city" data-id="'.$row->id.'" title="Edit"><i class="fa fa-edit"></i></a>
-        //                     <a href="javascript:;" id="cityDelete" data-id="'.$row->id.'" title="Delete"><i class="fa fa-trash text-danger"></i></a>';
-
-        //             return $btn;
-        //         })
-        //         ->rawColumns(['action'])
-        //         ->make(true);
-
         $cities = City::select('id','name');
         return DataTables::of($cities)
-            ->skipTotalRecords()
-            ->toJson();
+                ->addIndexColumn()
+                ->editColumn('name', function($row){
+                    return ucfirst($row->name);
+                })
+                ->addColumn('action', function($row){
+                    $btn = '<a href="javascript:;" id="edit-city" data-id="'.$row->id.'" title="Edit"><i class="fa fa-edit"></i></a>
+                            <a href="javascript:;" id="cityDelete" data-id="'.$row->id.'" title="Delete"><i class="fa fa-trash text-danger"></i></a>';
+
+                    return $btn;
+                })
+                ->rawColumns(['action'])
+                ->skipTotalRecords()
+                ->toJson();
     }
 
     
     public function store()
     {
-        $category = $this->category->saveCategory($this->request);
-        if($category){
+        $city = $this->city->saveCity($this->request);
+        if($city){
             if($this->request->id){
-                return response()->json(['status' => 'success', 'message' => 'Category updated successfully']);    
+                return response()->json(['status' => 'success', 'message' => 'City updated successfully']);    
             }
-            return response()->json(['status' => 'success', 'message' => 'Category added successfully']);
+            return response()->json(['status' => 'success', 'message' => 'City added successfully']);
         }
-        return response()->json(['status' => 'error', 'message' => 'Category does not added']);
+        return response()->json(['status' => 'error', 'message' => 'City does not added']);
     }
 
-    public function categoryValidate()
+    public function cityValidate()
     {
-        $data = Category::where('name', $this->request->name)
+        $data = City::where('name', $this->request->name)
                     ->where('id','!=',$this->request->id)
                     ->first();
         if($data){
@@ -72,26 +71,19 @@ class CityController extends Controller
      */
     public function edit($id)
     {
-        $categoryData = Category::find($id);
-        return response()->json(compact('categoryData'));
+        $cityData = City::find($id);
+        return response()->json(compact('cityData'));
     }
 
     /**
      * Remove the specified category
      */
-    public function destroy($id)
-    {
-        $questions = $this->questionBank::where('category_id', $id)->first();
-        $exams = $this->exam::where('category_id', $id)->first();
-        if ($questions) {
-            return response()->json(['status' => 'error', 'message' => 'Sorry! Category is present in question bank']); 
-        } else if ($exams){
-            return response()->json(['status' => 'error', 'message' => 'Sorry! Category is present in exams']);
-        } else{
-            if($this->category->deleteCategory($id)){
-                return response()->json(['status' => 'success', 'message' => 'Category deleted successfully']); 
-            }
-            return response()->json(['status' => 'error', 'message' => 'Category does not deleted']);
+    public function destroy($id){
+        $city = $this->city->deleteCity($id);
+        if($city){
+            return response()->json(['status' => 'success', 'message' => 'City deleted successfully']); 
         }
+        return response()->json(['status' => 'error', 'message' => 'City does not deleted']);
     }
+    
 }

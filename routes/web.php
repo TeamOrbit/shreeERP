@@ -37,10 +37,19 @@ Route::group(['middleware' => ['auth']], function ()
 	Route::prefix('cities')->group(function() {
 		Route::get('/', 'CityController@index')->name('cities');
 		Route::post('/get-data', 'CityController@getData')->name('get-data');
+		Route::get('/city-validate', 'CityController@cityValidate')->name('city-validate');
+		Route::post('/store', 'CityController@store')->name('store-city');
+		Route::get('/edit/{id}', 'CityController@edit')->name('edit-city');
+	    Route::get('/delete/{id}', 'CityController@destroy')->name('delete-city');
 	});
 
 	Route::prefix('categories')->group(function() {
 		Route::get('/', 'CategoryController@index')->name('categories');
+	    Route::get('/category-validate', 'CategoryController@categoryValidate')->name('category-validate');
+	    Route::post('/get-data', 'CategoryController@getData')->name('get-data');
+	    Route::post('/store', 'CategoryController@store')->name('store-category');
+	    Route::get('/edit/{id}', 'CategoryController@edit')->name('edit-category');
+	    Route::get('/delete/{id}', 'CategoryController@destroy')->name('delete-category');
 	});
 
 	Route::prefix('items')->group(function() {
