@@ -23,6 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('themes.default');
+        return view('themes.home');
     }
 }
