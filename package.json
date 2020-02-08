@@ -24,6 +24,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "datatables": "^1.10.18",
         "jquery-validation": "^1.19.1"
     }
 }

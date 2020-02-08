@@ -5,6 +5,7 @@
  */
 
 require('./bootstrap');
+require('./admin/cities.js');
 
 window.Vue = require('vue');
 

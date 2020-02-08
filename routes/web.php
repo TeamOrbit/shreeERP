@@ -36,6 +36,7 @@ Route::group(['middleware' => ['auth']], function ()
 
 	Route::prefix('cities')->group(function() {
 		Route::get('/', 'CityController@index')->name('cities');
+		Route::post('/get-data', 'CityController@getData')->name('get-data');
 	});
 
 	Route::prefix('categories')->group(function() {

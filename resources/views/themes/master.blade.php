@@ -20,7 +20,9 @@
     <link href="{{ asset('theme/css/light-bootstrap-dashboard.css?v=2.0.0') }} " rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{ asset('theme/css/demo.css') }}" rel="stylesheet" />
-
+    <script >
+            var baseUrl ='{{URL::to('/')}}';
+    </script>
 </head>
 
 <body>
@@ -142,10 +144,13 @@
         </div>
     </div>
 
-   <!--   Core JS Files   -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
+     <!--   Core JS Files   -->
     <script src="{{ asset('theme/js/core/jquery.3.2.1.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('theme/js/core/popper.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('theme/js/core/bootstrap.min.js') }}" type="text/javascript"></script>
+
     <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
     <script src="{{ asset('theme/js/plugins/bootstrap-switch.js') }}"></script>
     <!--  Chartist Plugin  -->

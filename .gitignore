@@ -1,6 +1,7 @@
 /node_modules
 /public/hot
 /public/storage
+/public/*
 /storage/*.key
 /vendor
 .env
@@ -14,6 +15,4 @@ public/css/app.css
 public/js/app.js
 public/mix-manifest.json
 package-lock.json
-package.json
-package.json
 package.json
