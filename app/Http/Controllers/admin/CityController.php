@@ -67,7 +67,7 @@ class CityController extends Controller
     } 
 
     /**
-     * Show the form for editing a specified category
+     * Show the form for editing a specified city
      */
     public function edit($id)
     {
@@ -76,7 +76,7 @@ class CityController extends Controller
     }
 
     /**
-     * Remove the specified category
+     * Remove the specified city
      */
     public function destroy($id){
         $city = $this->city->deleteCity($id);
