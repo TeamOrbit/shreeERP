@@ -39,19 +39,19 @@
                     </a>
                 </div>
                 <ul class="nav">
-                    <li class="nav-item {{ (request()->is('admin/cities')) ? 'active' : '' }}">
+                    <li class="nav-item {{ (request()->is('reports')) ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('reports') }}">
                             <i class="nc-icon nc-chart-pie-35"></i>
                             <p>Reports</p>
                         </a>
                     </li>
-                    <li>
+                    <li class="nav-item {{ (request()->is('sales')) ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('sales') }}">
                             <i class="nc-icon nc-circle-09"></i>
                             <p>Sales</p>
                         </a>
                     </li>
-                    <li>
+                    <li class="nav-item {{ (request()->is('purchases')) ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('purchases') }}">
                             <i class="nc-icon nc-notes"></i>
                             <p>Purchase</p>
