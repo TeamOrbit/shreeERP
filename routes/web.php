@@ -54,6 +54,11 @@ Route::group(['middleware' => ['auth']], function ()
 
 	Route::prefix('items')->group(function() {
 		Route::get('/', 'ItemController@index')->name('items');
+		Route::get('/item-validate', 'ItemController@itemValidate')->name('item-validate');
+	    Route::post('/get-data', 'ItemController@getData')->name('get-data');
+	    Route::post('/store', 'ItemController@store')->name('store-item');
+	    Route::get('/edit/{id}', 'ItemController@edit')->name('edit-item');
+	    Route::get('/delete/{id}', 'ItemController@destroy')->name('delete-item');
 	});
 
 	Route::prefix('units')->group(function() {
