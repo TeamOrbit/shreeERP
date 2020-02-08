@@ -12,8 +12,8 @@ $(document).ready(function(){
         columns: [
             {data: 'DT_RowIndex', name: 'DT_RowIndex',searchable: false, width: "5%"},
             {data: 'name', name: 'name', width: "30%"},
-            {data: 'description', name: 'description', width: "55%"},
-            {data: 'action', name: 'action', orderable: false, searchable: false, width: "15%", className: "text-center"},
+            {data: 'description', name: 'description', width: "40%"},
+            {data: 'action', name: 'action', orderable: false, searchable: false, width: "25%", className: "text-center"},
         ],
         columnDefs: [ {
             targets: 1,

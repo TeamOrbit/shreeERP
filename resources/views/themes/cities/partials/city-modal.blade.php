@@ -10,7 +10,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="container">
-                        <input type="hidden" name="id" id="category-id">
+                        <input type="hidden" name="id" id="city-id">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
