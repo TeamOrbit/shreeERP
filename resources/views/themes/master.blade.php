@@ -26,7 +26,7 @@
 <body>
 
    <div class="wrapper">
-        <div class="sidebar" data-image="../assets/img/sidebar-5.jpg">
+        <div class="sidebar" data-image="{{ asset('theme/img/sidebar-5.jpg') }}">
             <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
 
@@ -39,7 +39,7 @@
                     </a>
                 </div>
                 <ul class="nav">
-                    <li class="nav-item active">
+                    <li class="nav-item {{ (request()->is('admin/cities')) ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('reports') }}">
                             <i class="nc-icon nc-chart-pie-35"></i>
                             <p>Reports</p>
@@ -148,8 +148,6 @@
     <script src="{{ asset('theme/js/core/bootstrap.min.js') }}" type="text/javascript"></script>
     <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
     <script src="{{ asset('theme/js/plugins/bootstrap-switch.js') }}"></script>
-    <!--  Google Maps Plugin    -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
     <!--  Chartist Plugin  -->
     <script src="{{ asset('theme/js/plugins/chartist.min.js') }}"></script>
     <!--  Notifications Plugin    -->
