@@ -10,11 +10,11 @@
             </div>
             <hr>
             <div class="table-responsive">
-                <table id="categoryTable" class="table table-bordered">
+                <table id="cityTable" class="table table-bordered">
                <thead>
                     <tr>
+                        <th>#</th>
                         <th>Name</th>
-                        <th>Description</th>
                         <th>Action</th>
                     </tr>
                </thead>

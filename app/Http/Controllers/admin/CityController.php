@@ -24,20 +24,22 @@ class CityController extends Controller
 
     public function getData()
     {
-        $data = City::select('id', 'name')->orderBy('id', 'desc')
-                        ->get();
-        return DataTables::of($data)
-                ->editColumn('name', function($row){
-                    return ucfirst($row->name);
-                })
-                ->addColumn('action', function($row){
-                    $btn = '<a href="javascript:;" id="edit-city" data-id="'.$row->id.'" title="Edit"><i class="fa fa-edit"></i></a>
-                            <a href="javascript:;" id="cityDelete" data-id="'.$row->id.'" title="Delete"><i class="fa fa-trash text-danger"></i></a>';
+        // $data = City::select('id', 'name')->orderBy('id', 'desc');
+        // return DataTables::of($data)
+        //         ->addIndexColumn()
+        //         ->addColumn('action', function($row){
+        //             $btn = '<a href="javascript:;" id="edit-city" data-id="'.$row->id.'" title="Edit"><i class="fa fa-edit"></i></a>
+        //                     <a href="javascript:;" id="cityDelete" data-id="'.$row->id.'" title="Delete"><i class="fa fa-trash text-danger"></i></a>';
 
-                    return $btn;
-                })
-                ->rawColumns(['action'])
-                ->make(true);
+        //             return $btn;
+        //         })
+        //         ->rawColumns(['action'])
+        //         ->make(true);
+
+        $cities = City::select('id','name');
+        return DataTables::of($cities)
+            ->skipTotalRecords()
+            ->toJson();
     }
 
     

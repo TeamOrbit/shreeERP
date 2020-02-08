@@ -1,5 +1,5 @@
 $(document).ready(function(){
-alert("dgfdgfdgdf");
+
     $('#cityTable').DataTable({
         processing: true,
         serverSide: true,
@@ -10,7 +10,8 @@ alert("dgfdgfdgdf");
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
         },
         columns: [
-            {data: 'name', name: 'name', width: "30%"},
+            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+            {data: 'name', name: 'name', width: "85%"},
             {data: 'action', name: 'action', orderable: false, searchable: false, width: "15%", className: "text-center"},
         ],
         columnDefs: [ {
