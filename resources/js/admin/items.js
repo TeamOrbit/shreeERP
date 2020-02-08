@@ -41,15 +41,52 @@ $(document).ready(function(){
                 required : true, 
                 minlength: 5
             },
+            category  : {
+                required : true
+            },
+            purchase_price  : {
+                required : true
+            },
+            quantity  : {
+                required : true
+            },
+            unit  : {
+                required : true
+            },
+            selling_price  : {
+                required : true
+            },
+            gst  : {
+                required : true
+            },
         },
         messages:{
             name : { 
-                required : "Please enter item name.",
+                required : "Please enter name.",
                 remote: 'The name has already been taken.'},
             description  : { 
-                required : "Please enter item description.", 
+                required : "Please enter description.", 
                 minlength: 'Please enter minimum 3 characters'
             },
+            purchase_price  : { 
+                required : "Please enter purchase price"
+            },
+            category  : { 
+                required : "Please select category"
+            },
+            quantity  : { 
+                required : "Please enter quantity"
+            },
+            selling_price  : { 
+                required : "Please enter selling price"
+            },
+            unit  : { 
+                required : "Please select unit"
+            },
+            gst  : { 
+                required : "Please enter gst"
+            },
+
         },
     });
 
