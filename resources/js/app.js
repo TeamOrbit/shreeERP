@@ -6,6 +6,7 @@
 
 require('./bootstrap');
 require('./admin/cities.js');
+require('./admin/units.js');
 require('./admin/categories.js');
 
 window.Vue = require('vue');

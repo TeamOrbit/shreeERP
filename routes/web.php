@@ -58,6 +58,11 @@ Route::group(['middleware' => ['auth']], function ()
 
 	Route::prefix('units')->group(function() {
 		Route::get('/', 'UnitController@index')->name('units');
+		Route::post('/get-data', 'UnitController@getData')->name('get-data');
+		Route::get('/unit-validate', 'UnitController@unitValidate')->name('unit-validate');
+		Route::post('/store', 'UnitController@store')->name('store-unit');
+		Route::get('/edit/{id}', 'UnitController@edit')->name('edit-unit');
+	    Route::get('/delete/{id}', 'UnitController@destroy')->name('delete-unit');
 	});
 
 	Route::prefix('customers')->group(function() {
