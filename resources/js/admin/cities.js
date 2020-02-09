@@ -22,10 +22,23 @@ $(document).ready(function(){
         } ]
     });
 
+    jQuery.validator.addMethod("lettersonly", function(value, element) 
+    {
+        return this.optional(element) || /^[a-z]+$/i.test(value);
+    }, "Please enter only letters"); 
+
+    $(window).keydown(function(event){
+        if(event.keyCode == 13) {
+            event.preventDefault();
+            return false;
+        }
+    });
+
     var validator = $('#addCityForm').validate({
         rules:{
             name : {
-                required : true, 
+                required : true,
+                lettersonly: true,
                 minlength: 3, 
                 remote: {
                     url: '/cities/city-validate',
@@ -44,7 +57,7 @@ $(document).ready(function(){
         },
         messages:{
             name : { 
-                required : "Please enter city name.", 
+                required : "Please enter city name",
                 minlength: 'Please enter minimum 3 characters',
                 remote: 'The name has already been taken.'},
         },
