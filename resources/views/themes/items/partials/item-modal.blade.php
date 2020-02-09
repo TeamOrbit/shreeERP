@@ -29,7 +29,12 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="name">Category <i class="text-danger">*</i></label>
-                                    <input id="category" type="text" name="category" class="form-control" placeholder="Please enter category">
+                                    <select id="category" name="category" class="form-control">
+                                        <option selected disabled>--Please select category--</option>
+                                        @foreach($categories as $category)
+                                            <option value="{{$category->id}}">{{ucfirst($category->name)}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -49,7 +54,12 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="name">Unit <i class="text-danger">*</i></label>
-                                    <input id="unit" type="text" name="unit" class="form-control" placeholder="Please enter unit">
+                                    <select id="unit" name="unit" class="form-control">
+                                        <option selected disabled>--Please select unit--</option>
+                                        @foreach($units as $unit)
+                                            <option value="{{$unit->id}}">{{ucfirst($unit->name)}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                         </div>

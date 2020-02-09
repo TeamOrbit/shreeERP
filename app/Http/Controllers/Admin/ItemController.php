@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Item;
+use App\Models\Unit;
+use App\Models\Category;
 use DataTables;
 
 class ItemController extends Controller
@@ -18,20 +20,37 @@ class ItemController extends Controller
     }
 
    	public function index(){
-    	return view('themes.items.index');
+        $categories = Category::get();
+        $units = Unit::get();
+    	return view('themes.items.index',compact('categories','units'));
 	}
 
     public function getData()
     {
-        $data = Item::select('id', 'name', 'description')->orderBy('id', 'desc')
+        $data = Item::select('id', 'name', 'category_id', 'purchase_price', 'quantity', 'unit_id', 'selling_price', 'gst')->orderBy('id', 'desc')
                         ->get();
         return DataTables::of($data)
         		->addIndexColumn()
                 ->editColumn('name', function($row){
                     return ucfirst($row->name);
                 })
-                ->editColumn('description', function($row){
-                    return ucfirst($row->description);
+                ->editColumn('category_id', function($row){
+                    return ucfirst($row->categories->name);
+                })
+                ->editColumn('purchase_price', function($row){
+                    return ucfirst($row->purchase_price);
+                })
+                ->editColumn('quantity', function($row){
+                    return ucfirst($row->quantity);
+                })
+                ->editColumn('unit_id', function($row){
+                    return ucfirst($row->units->name);
+                })
+                ->editColumn('selling_price', function($row){
+                    return ucfirst($row->selling_price);
+                })
+                ->editColumn('gst', function($row){
+                    return ucfirst($row->gst);
                 })
                 ->addColumn('action', function($row){
                     $btn = '<a href="javascript:;" id="edit-item" data-id="'.$row->id.'" title="Edit"><i class="fa fa-edit"></i></a>
