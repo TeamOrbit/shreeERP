@@ -72,6 +72,11 @@ Route::group(['middleware' => ['auth']], function ()
 
 	Route::prefix('customers')->group(function() {
 		Route::get('/', 'CustomerController@index')->name('customers');
+		Route::post('/get-data', 'CustomerController@getData')->name('get-data');
+		Route::get('/email-validate', 'CustomerController@emailValidate')->name('email-validate');
+		Route::post('/store', 'CustomerController@store')->name('store-customer');
+		Route::get('/edit/{id}', 'CustomerController@edit')->name('edit-customer');
+	    Route::get('/delete/{id}', 'CustomerController@destroy')->name('delete-customer');
 	});
 
 	Route::prefix('suppliers')->group(function() {

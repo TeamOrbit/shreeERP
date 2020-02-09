@@ -1,7 +1,7 @@
 @extends('themes.master')
 
 @section('content')
-<div class="container">
+<div class="content">
     <div class="row">
         <div class="col-md-12">
             <div class="inline-block">
@@ -23,6 +23,6 @@
             </div>
         </div>
     </div>
+    @include('themes.categories.partials.category-modal')
 </div>
-@include('themes.categories.partials.category-modal')
 @endsection

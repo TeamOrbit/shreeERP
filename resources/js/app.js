@@ -9,6 +9,7 @@ require('./admin/cities.js');
 require('./admin/units.js');
 require('./admin/items.js');
 require('./admin/categories.js');
+require('./admin/customers.js');
 
 window.Vue = require('vue');
 
