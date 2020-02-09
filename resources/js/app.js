@@ -10,6 +10,7 @@ require('./admin/units.js');
 require('./admin/items.js');
 require('./admin/categories.js');
 require('./admin/customers.js');
+require('./admin/suppliers.js');
 
 window.Vue = require('vue');
 
