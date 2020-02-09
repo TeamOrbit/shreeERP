@@ -1,7 +1,7 @@
 <div class="modal fade bd-example-modal-lg show" id="addCityModal"  role="dialog" aria-labelledby="myLargeModalLabel">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form id="addCityForm" novalidate>
+            <form id="addCityForm" class="form-prevent-multiple-submits">
                 <div class="modal-header">
                     <h5 class="modal-title">City</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -23,7 +23,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary-outline ks-light btn-fill" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-info btn-fill" id="save-category">Submit</button>
+                    <button type="submit" class="btn btn-info btn-fill button-prevent-multiple-submits" id="save-category">Submit</button>
                 </div>
             </form>
         </div>

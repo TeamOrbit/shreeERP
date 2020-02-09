@@ -1,5 +1,9 @@
 $(document).ready(function(){
 
+    $('.form-prevent-multiple-submits').on('submit', function(){
+        $('.button-prevent-multiple-submits').attr('disabled', true);
+    });
+
     $('#cityTable').DataTable({
         processing: true,
         serverSide: true,
@@ -78,6 +82,7 @@ $(document).ready(function(){
         $("#city-id").val('');
         validator.resetForm();
         $("#addCityModal .error").removeClass("error");
+        $('.button-prevent-multiple-submits').attr('disabled', false);
     });
 
     $(document).on('submit', '#addCityForm', function(e){
