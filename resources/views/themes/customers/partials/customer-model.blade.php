@@ -40,7 +40,6 @@
                                         <option value="male">Male</option>
                                         <option value="female">Female</option>
                                     </select>
-                                    <!-- <input id="gender" type="text" name="gender" class="form-control" placeholder="Please enter customer gender" maxlength="250"> -->
                                 </div>
                             </div>
                         </div>
@@ -49,7 +48,6 @@
                                 <div class="form-group">
                                     <label for="address">Address <i class="text-danger">*</i></label>
                                     <textarea id="address" type="text" name="address" class="form-control" placeholder="Please enter address" rows="3"></textarea>
-                                    <!-- <input id="address" type="text" name="address" class="form-control" placeholder="Please enter customer address" maxlength="1000"> -->
                                 </div>
                             </div>
                         </div>
