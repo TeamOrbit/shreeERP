@@ -27,6 +27,12 @@ $(document).ready(function(){
         return this.optional(element) || /^[a-z]+$/i.test(value);
     }, "Please enter only letters"); 
 
+    jQuery.validator.addMethod("rrrpeating", function(value, element) 
+    { 
+        return this.optional(element) ||  !/([a-z\d])\1\1/i.test(value); 
+    }, "PPPplease don't use RRRepeating CCCharacters");
+
+
     $(window).keydown(function(event){
         if(event.keyCode == 13) {
             event.preventDefault();
@@ -38,8 +44,10 @@ $(document).ready(function(){
         rules:{
             name : {
                 required : true,
-                lettersonly: true,
-                minlength: 3, 
+                lettersonly : true,
+                rrrpeating : true,
+                minlength: 3,
+                maxlength : 25,
                 remote: {
                     url: '/cities/city-validate',
                     type: 'get',
