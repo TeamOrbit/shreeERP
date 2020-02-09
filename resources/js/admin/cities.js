@@ -14,7 +14,7 @@ $(document).ready(function(){
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
         },
         columns: [
-            {data: 'DT_RowIndex', name: 'DT_RowIndex',searchable: false, width: "5%"},
+            {data: 'DT_RowIndex', name: 'DT_RowIndex',searchable: false, orderable: false, width: "5%"},
             {data: 'name', name: 'name', width: "65%"},
             {data: 'action', name: 'action', orderable: false, searchable: false, width: "30%", className: "text-center"},
         ],
