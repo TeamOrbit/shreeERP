@@ -15,7 +15,12 @@
                     <tr>
                         <th>#</th>
                         <th>Name</th>
-                        <th>Description</th>
+                        <th>Category</th>
+                        <th>Purchase Price</th>
+                        <th>Quantity</th>
+                        <th>Unit</th>
+                        <th>Selling Price</th>
+                        <th>GST</th>
                         <th>Action</th>
                     </tr>
                </thead>

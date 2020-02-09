@@ -133,7 +133,7 @@
                             <p class="copyright text-center">
                                 ©
                                {{ now()->year }}
-                                <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
+                                <a href="#">TeamVault</a>, made with love for a better web
                             </p>
                         </nav>
                     </div>

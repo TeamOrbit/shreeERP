@@ -11,8 +11,13 @@ $(document).ready(function(){
         },
         columns: [
             {data: 'DT_RowIndex', name: 'DT_RowIndex',searchable: false, width: "5%"},
-            {data: 'name', name: 'name', width: "30%"},
-            {data: 'description', name: 'description', width: "40%"},
+            {data: 'name', name: 'name', width: "20%"},
+            {data: 'category_id', name: 'category_id', width: "5%"},
+            {data: 'purchase_price', name: 'purchase_price', width: "10%"},
+            {data: 'quantity', name: 'quantity', width: "10%"},
+            {data: 'unit_id', name: 'unit_id', width: "5%"},
+            {data: 'selling_price', name: 'selling_price', width: "10%"},
+            {data: 'gst', name: 'gst', width: "10%"},
             {data: 'action', name: 'action', orderable: false, searchable: false, width: "25%", className: "text-center"},
         ],
         columnDefs: [ {
@@ -28,7 +33,7 @@ $(document).ready(function(){
             name : {
                 required : true,
                 remote: {
-                    url: '/item/item-validate',
+                    url: '/items/item-validate',
                     type: 'get',
                     data: {
                             id: function(){
@@ -108,7 +113,7 @@ $(document).ready(function(){
         });
         if($('#addItemForm').valid()) {
             $.ajax({
-                url: baseUrl + '/item/store',
+                url: baseUrl + '/items/store',
                 type: "POST",
                 data: new FormData(this),
                 dataType: 'json',
@@ -145,9 +150,16 @@ $(document).ready(function(){
             success: function(data, textStatus, jqXHR) {
                 if(data.itemData){
                     itemInfo = data.itemData;
-                    $("#category-id").val(itemInfo.id);
+                    console.log(itemInfo);
+                    $("#item-id").val(itemInfo.id);
                     $("#name").val(itemInfo.name);
+                    $("#category").val(itemInfo.category_id);
                     $("#description").val(itemInfo.description);
+                    $("#purchase_price").val(itemInfo.purchase_price);
+                    $("#quantity").val(itemInfo.quantity);
+                    $("#unit").val(itemInfo.unit_id);
+                    $("#selling_price").val(itemInfo.selling_price);
+                    $("#gst").val(itemInfo.gst);
 
                     $('#addItemModal').modal('show');
                 }                
