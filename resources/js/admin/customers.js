@@ -1,5 +1,9 @@
 $(document).ready(function(){
 
+    $('.form-prevent-multiple-submits').on('submit', function(){
+        $('.button-prevent-multiple-submits').attr('disabled', true);
+    });
+
     $('#customerTable').DataTable({
         processing: true,
         serverSide: true,
@@ -103,6 +107,7 @@ $(document).ready(function(){
         $("#customer-id").val('');
         validator.resetForm();
         $("#addCustomerModal .error").removeClass("error");
+        $('.button-prevent-multiple-submits').attr('disabled', false);
     });
 
     $(document).on('submit', '#addCustomerForm', function(e){

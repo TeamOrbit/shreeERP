@@ -15,7 +15,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="name">Name <i class="text-danger">*</i></label>
-                                    <input id="name" type="text" name="name" class="form-control" placeholder="Please enter city name" maxlength="250">
+                                    <input id="name" type="text" name="name" class="form-control" placeholder="Please enter city name" maxlength="30">
                                 </div>
                             </div>
                         </div>

@@ -1,5 +1,9 @@
 $(document).ready(function(){
 
+    $('.form-prevent-multiple-submits').on('submit', function(){
+        $('.button-prevent-multiple-submits').attr('disabled', true);
+    });
+
     $('#categoryTable').DataTable({
         processing: true,
         serverSide: true,
@@ -64,6 +68,7 @@ $(document).ready(function(){
         $("#category-id").val('');
         validator.resetForm();
         $("#addCategoryModal .error").removeClass("error");
+        $('.button-prevent-multiple-submits').attr('disabled', false);
     });
 
     $(document).on('submit', '#addCategoryForm', function(e){

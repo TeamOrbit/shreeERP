@@ -1,5 +1,9 @@
 $(document).ready(function(){
 
+    $('.form-prevent-multiple-submits').on('submit', function(){
+        $('.button-prevent-multiple-submits').attr('disabled', true);
+    });
+
     $('#supplierTable').DataTable({
         processing: true,
         serverSide: true,
@@ -121,6 +125,7 @@ $(document).ready(function(){
         $("#supplier-id").val('');
         validator.resetForm();
         $("#addSupplierModal .error").removeClass("error");
+        $('.button-prevent-multiple-submits').attr('disabled', false);
     });
 
     $(document).on('submit', '#addSupplierForm', function(e){

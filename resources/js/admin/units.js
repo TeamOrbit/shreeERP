@@ -1,5 +1,9 @@
 $(document).ready(function(){
 
+    $('.form-prevent-multiple-submits').on('submit', function(){
+        $('.button-prevent-multiple-submits').attr('disabled', true);
+    });
+
     $('#unitTable').DataTable({
         processing: true,
         serverSide: true,
@@ -10,7 +14,7 @@ $(document).ready(function(){
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
         },
         columns: [
-            {data: 'DT_RowIndex', name: 'DT_RowIndex',searchable: false, width: "5%"},
+            {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false, width: "5%"},
             {data: 'name', name: 'name', width: "65%"},
             {data: 'action', name: 'action', orderable: false, searchable: false, width: "30%", className: "text-center"},
         ],
@@ -22,10 +26,15 @@ $(document).ready(function(){
         } ]
     });
 
+    jQuery.validator.addMethod("lettersonly", function(value, element, param) {
+      return value.match(new RegExp("." + param + "$"));
+    });
+
     var validator = $('#addUnitForm').validate({
         rules:{
             name : {
                 required : true,
+                lettersonly: "[a-zA-Z]+",
                 remote: {
                     url: '/units/unit-validate',
                     type: 'get',
@@ -45,6 +54,7 @@ $(document).ready(function(){
             name : { 
                 required : "Please enter unit name.",
                 remote: 'The name has already been taken.'},
+                lettersonly: "Please enter name in letters."
         },
     });
 
@@ -55,6 +65,7 @@ $(document).ready(function(){
         $("#unit-id").val('');
         validator.resetForm();
         $("#addUnitModal .error").removeClass("error");
+        $('.button-prevent-multiple-submits').attr('disabled', false);
     });
 
     $(document).on('submit', '#addUnitForm', function(e){

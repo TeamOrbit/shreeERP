@@ -1,5 +1,9 @@
 $(document).ready(function(){
 
+    $('.form-prevent-multiple-submits').on('submit', function(){
+        $('.button-prevent-multiple-submits').attr('disabled', true);
+    });
+
     $('#itemTable').DataTable({
         processing: true,
         serverSide: true,
@@ -102,6 +106,7 @@ $(document).ready(function(){
         $("#item-id").val('');
         validator.resetForm();
         $("#addItemModal .error").removeClass("error");
+        $('.button-prevent-multiple-submits').attr('disabled', false);
     });
 
     $(document).on('submit', '#addItemForm', function(e){

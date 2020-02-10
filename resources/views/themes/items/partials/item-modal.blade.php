@@ -1,7 +1,7 @@
 <div class="modal fade bd-example-modal-lg show" id="addItemModal"  role="dialog" aria-labelledby="myLargeModalLabel">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form id="addItemForm" novalidate>
+            <form id="addItemForm" class="form-prevent-multiple-submits">
                 <div class="modal-header">
                     <h5 class="modal-title">Item</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -40,7 +40,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="name">Purchase Price <i class="text-danger">*</i></label>
-                                    <input id="purchase_price" type="number" name="purchase_price" class="form-control" placeholder="Please enter purchase price">
+                                    <input id="purchase_price" type="number" name="purchase_price" class="form-control" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==15) return false;" placeholder="Please enter purchase price"/>
                                 </div>
                             </div>
                         </div>
@@ -48,7 +48,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="name">Quantity <i class="text-danger">*</i></label>
-                                    <input id="quantity" type="text" name="quantity" class="form-control" placeholder="Please enter quantity">
+                                    <input id="quantity" type="number" name="quantity" class="form-control" placeholder="Please enter quantity" pattern="/^?\d+\?\d*$/" onKeyPress="if(this.value.length==8) return false;" min="1">
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -67,13 +67,13 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="name">Selling Price <i class="text-danger">*</i></label>
-                                    <input id="selling_price" type="text" name="selling_price" class="form-control" placeholder="Please enter selling price">
+                                    <input id="selling_price" type="number" name="selling_price" class="form-control" pattern="/^?\d+\.?\d*$/" onKeyPress="if(this.value.length==8) return false;" placeholder="Please enter selling price">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="name">GST (in percentage) <i class="text-danger">*</i></label>
-                                    <input id="gst" type="text" name="gst" class="form-control" placeholder="Please enter gst">
+                                    <label for="name">GST (in percentage %) <i class="text-danger">*</i></label>
+                                    <input id="gst" type="number" name="gst" class="form-control" pattern="/^?\d+\?\d*$/" onKeyPress="if(this.value.length==8) return false;" placeholder="Please enter gst">
                                 </div>
                             </div>
                         </div>
@@ -81,7 +81,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary-outline btn-fill ks-light" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary btn-fill" id="save-category">Submit</button>
+                    <button type="submit" class="btn btn-primary btn-fill button-prevent-multiple-submits" id="save-category">Submit</button>
                 </div>
             </form>
         </div>

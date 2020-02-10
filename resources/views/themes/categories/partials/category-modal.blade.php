@@ -1,7 +1,7 @@
 <div class="modal fade bd-example-modal-lg show" id="addCategoryModal"  role="dialog" aria-labelledby="myLargeModalLabel">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form id="addCategoryForm" novalidate>
+            <form id="addCategoryForm" class="form-prevent-multiple-submits">
                 <div class="modal-header">
                     <h5 class="modal-title">Category</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -15,7 +15,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="name">Name <i class="text-danger">*</i></label>
-                                    <input id="name" type="text" name="name" class="form-control" placeholder="Please enter name" maxlength="250">
+                                    <input id="name" type="text" name="name" class="form-control" placeholder="Please enter name" maxlength="25">
                                 </div>
                             </div>
                         </div>
@@ -31,7 +31,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary-outline btn-fill ks-light" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary btn-fill" id="save-category">Submit</button>
+                    <button type="submit" class="btn btn-primary btn-fill button-prevent-multiple-submits" id="save-category">Submit</button>
                 </div>
             </form>
         </div>
