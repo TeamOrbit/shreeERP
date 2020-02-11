@@ -14,10 +14,10 @@ $(document).ready(function(){
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
         },
         columns: [
-            {data: 'DT_RowIndex', name: 'DT_RowIndex',searchable: false, width: "5%"},
-            {data: 'company_name', name: 'company_name', width: "25%"},
-            {data: 'name', name: 'name', width: "40%"},
-            {data: 'action', name: 'action', orderable: false, searchable: false, width: "30%", className: "text-center"},
+            {data: 'DT_RowIndex', name: 'DT_RowIndex',searchable: false, orderable: false},
+            {data: 'company_name', name: 'company_name'},
+            {data: 'name', name: 'name'},
+            {data: 'action', name: 'action', orderable: false, searchable: false, className: "text-center"},
         ],
       
     });

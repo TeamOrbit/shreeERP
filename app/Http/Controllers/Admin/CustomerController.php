@@ -21,8 +21,7 @@ class CustomerController extends Controller
 	}
 	public function getData()
     {
-        $data = Customer::select('id', 'name', 'email')->orderBy('id', 'desc')
-                        ->get();
+        $data = Customer::select('id', 'name', 'email')->orderBy('id', 'desc');
         return DataTables::of($data)
         		->addIndexColumn()
                 ->editColumn('name', function($row){
@@ -31,7 +30,6 @@ class CustomerController extends Controller
                 ->addColumn('action', function($row){
                     $btn = '<a href="javascript:;" id="edit-customer" data-id="'.$row->id.'" title="Edit"><i class="fa fa-edit"></i></a>
                             <a href="javascript:;" id="customerDelete" data-id="'.$row->id.'" title="Delete"><i class="fa fa-trash text-danger"></i></a>';
-
                     return $btn;
                 })
                 ->rawColumns(['action'])

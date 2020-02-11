@@ -11,14 +11,14 @@
             <hr>
             <div class="table-responsive">
                 <table id="supplierTable" class="table table-bordered">
-               <thead>
+                <thead>
                     <tr>
                         <th>#</th>
                         <th>Company Name</th>
                         <th>Name</th>
                         <th>Action</th>
                     </tr>
-               </thead>
+                </thead>
                 </table>
             </div>
         </div>

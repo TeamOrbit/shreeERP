@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Supplier;
 use DataTables;
+use DB;
 
 class SupplierController extends Controller
 {
@@ -21,19 +22,22 @@ class SupplierController extends Controller
 	}
 	public function getData()
     {
-        $data = Supplier::select('id', 'company_name', 'first_name', 'last_name', 'email')->orderBy('id', 'desc');
-        return DataTables::of($data)
+        $suppliers = Supplier::select('id', 'company_name',  \DB::raw("CONCAT(suppliers.first_name,' ',suppliers.last_name) as name"), 'email')->orderBy('id', 'desc');
+
+        return DataTables::of($suppliers)
         		->addIndexColumn()
         		->editColumn('company_name', function($row){
                     return ucfirst($row->company_name);
                 })
+                ->filterColumn('name', function($query, $keyword) {
+                    $query->whereRaw("CONCAT(suppliers.first_name,' ',suppliers.last_name) like ?", ["%{$keyword}%"]);
+                })
                 ->addColumn('name', function($row){
-                    return ucfirst($row->first_name). ' ' .ucfirst($row->last_name);
+                    return ucfirst($row->name);
                 })
                 ->addColumn('action', function($row){
                     $btn = '<a href="javascript:;" id="edit-supplier" data-id="'.$row->id.'" title="Edit"><i class="fa fa-edit"></i></a>
                             <a href="javascript:;" id="supplierDelete" data-id="'.$row->id.'" title="Delete"><i class="fa fa-trash text-danger"></i></a>';
-
                     return $btn;
                 })
                 ->rawColumns(['action'])

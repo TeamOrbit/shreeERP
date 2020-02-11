@@ -26,11 +26,6 @@ $(document).ready(function(){
         } ]
     });
 
-    jQuery.validator.addMethod("lettersonly", function(value, element) 
-    {
-        return this.optional(element) || /^[a-z]+$/i.test(value);
-    }, "Please enter only letters"); 
-
     jQuery.validator.addMethod("rrrpeating", function(value, element) 
     { 
         return this.optional(element) ||  !/([a-z\d])\1\1/i.test(value); 
@@ -48,7 +43,6 @@ $(document).ready(function(){
         rules:{
             name : {
                 required : true,
-                lettersonly : true,
                 rrrpeating : true,
                 minlength: 3,
                 maxlength : 25,
@@ -129,7 +123,7 @@ $(document).ready(function(){
             success: function(data, textStatus, jqXHR) {
                 if(data.cityData){
                     cityInfo = data.cityData;
-                    $("#category-id").val(cityInfo.id);
+                    $("#city-id").val(cityInfo.id);
                     $("#name").val(cityInfo.name);
                     $('#addCityModal').modal('show');
                 }                
