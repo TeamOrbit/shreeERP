@@ -98,7 +98,7 @@ $(document).ready(function(){
                 required   : "Please enter address",
             },
             city : {
-                required   : "Please enter city"
+                required   : "Please select city"
             },
             pincode : {
                 required   : "Please enter pincode",

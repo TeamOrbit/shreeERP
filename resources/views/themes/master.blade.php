@@ -19,7 +19,7 @@
     <link href="{{ asset('theme/css/light-bootstrap-dashboard.css?v=2.0.0') }} " rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{ asset('theme/css/demo.css') }}" rel="stylesheet" />
-    <script >
+    <script>
             var baseUrl ='{{URL::to('/')}}';
     </script>
 </head>

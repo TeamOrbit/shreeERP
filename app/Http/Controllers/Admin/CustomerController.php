@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Customer;
+use App\Models\City;
 use DataTables;
 
 class CustomerController extends Controller
@@ -17,7 +18,8 @@ class CustomerController extends Controller
         $this->customer = $customer;
     }
     public function index(){
-    	return view('themes.customers.index');
+        $cities = City::select('id', 'name')->get();
+    	return view('themes.customers.index', compact('cities'));
 	}
 	public function getData()
     {

@@ -55,10 +55,12 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="city">City <i class="text-danger">*</i></label>
-                                    <!-- <select id="city" name="city" class="form-control">
+                                    <select id="city" name="city" class="form-control">
                                         <option selected disabled>--Please select city--</option>
-                                    </select> -->
-                                    <input id="city" type="text" name="city" class="form-control" placeholder="Please enter customer city" maxlength="250">
+                                        @foreach($cities as $city)
+                                            <option value="{{$city->id}}">{{ucfirst($city->name)}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-md-6">

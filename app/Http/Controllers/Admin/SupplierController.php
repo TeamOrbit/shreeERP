@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Supplier;
+use App\Models\City;
 use DataTables;
 use DB;
 
@@ -18,7 +19,8 @@ class SupplierController extends Controller
         $this->supplier = $supplier;
     }
     public function index(){
-    	return view('themes.suppliers.index');
+        $cities = City::select('id', 'name')->get();
+    	return view('themes.suppliers.index', compact('cities'));
 	}
 	public function getData()
     {

@@ -69,7 +69,12 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="city">City <i class="text-danger">*</i></label>
-                                    <input id="city" type="text" name="city" class="form-control" placeholder="Please enter supplier city" maxlength="250">
+                                    <select id="city" name="city" class="form-control">
+                                        <option selected disabled>--Please select city--</option>
+                                        @foreach($cities as $city)
+                                            <option value="{{$city->id}}">{{ucfirst($city->name)}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-md-6">
