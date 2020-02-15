@@ -33,6 +33,12 @@ class Item extends Model
     	return $this->find($id)->delete();
     }
 
+    public function getSelectedItemData($itemIds)
+    {
+        $itemsInfo = $this->whereIn('id', $itemIds)->get();
+        return $itemsInfo;
+    }
+
     public function categories() {
         return $this->belongsTo('App\Models\Category','category_id');
     }

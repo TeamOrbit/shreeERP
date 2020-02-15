@@ -18,17 +18,16 @@
 		    </div>
 		    <div class="col-md-6">
 		        <div class="form-group">
-		            <label for="name">Purchase Date <i class="text-danger">*</i></label>
-		            <input id="purchase_date" type="text" name="purchase_date" class="form-control">
-		        </div>
-		    </div>
+		            <label for="purchase_date">Purchase Date <i class="text-danger">*</i></label>
+                    <input id="purchase_date" type="text" class="form-control" name="purchase_date" autocomplete="nope" placeholder="Enter purchase date">
+		    	</div>
+			</div>
 		</div>
 		<div class="row">
 		    <div class="col-md-6">
 		        <div class="form-group">
 		            <label for="item">Item <i class="text-danger">*</i></label>
-		            <select id="item" name="item" class="form-control dynamicItem">
-		            		<option value></option>
+		            <select id="item" name="item" class="form-control dynamicItem" multiple>
 		                @foreach($items as $item)
 		                    <option value="{{$item->id}}">{{ucfirst($item->name)}}</option>
 		                @endforeach

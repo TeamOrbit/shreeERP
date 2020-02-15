@@ -59,6 +59,7 @@ Route::group(['middleware' => ['auth']], function ()
 	    Route::post('/store', 'ItemController@store')->name('store-item');
 	    Route::get('/edit/{id}', 'ItemController@edit')->name('edit-item');
 	    Route::get('/delete/{id}', 'ItemController@destroy')->name('delete-item');
+	    Route::post('/getItemsData', 'ItemController@getItemsData')->name('getItemsData');
 	});
 
 	Route::prefix('units')->group(function() {

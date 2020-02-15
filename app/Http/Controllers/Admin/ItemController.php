@@ -99,4 +99,15 @@ class ItemController extends Controller
         }
         return response()->json(['status' => 'error', 'message' => 'Item does not deleted']);
     }
+
+    public function getItemsData()
+    {
+        $itemIds = $this->request->selectedItems;
+        $quantity = $this->request->quantity;
+        $itemsData = $this->item->getSelectedItemData($itemIds);
+        if($itemsData)
+        {
+            return response()->json(['itemsInfo' => $itemsData , 'quantity' => $quantity]);
+        }
+    }
 }

@@ -24,6 +24,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "bootstrap4-datetimepicker": "^5.2.3",
         "datatables": "^1.10.18",
         "font-awesome": "^4.7.0",
         "jquery-validation": "^1.19.1",
