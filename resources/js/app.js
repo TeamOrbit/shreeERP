@@ -6,6 +6,7 @@
 
 require('./bootstrap');
 require('./admin/cities.js');
+require('./admin/purchase.js');
 require('./admin/units.js');
 require('./admin/items.js');
 require('./admin/categories.js');

@@ -27,6 +27,7 @@
         "datatables": "^1.10.18",
         "font-awesome": "^4.7.0",
         "jquery-validation": "^1.19.1",
+        "select2": "^4.0.13",
         "sweetalert": "^2.1.2"
     }
 }
