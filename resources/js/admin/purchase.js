@@ -46,10 +46,13 @@ $(document).ready(function(){
                     var itemsData = response.itemsInfo
                     console.log(itemsData);
                     $.each( itemsData, function( key, value ) {
-						itemsHTML = "<tr><td>"+value.name+"</td><td>"+response.quantity+"</td><td>"+value.selling_price+"</td><td>"+value.gst+"</td><td>"+500+"</td></tr>";
+                        if($("#dynamicItemTable").find("item_"+value.id+""))
+                        {
+						  itemsHTML = "<tr id=item_"+value.id+"><td><input type='hidden' name='item_id[]' value='"+value.id+"'>"+value.name+"</td><td>"+response.quantity+"</td><td>"+value.selling_price+"</td><td>"+value.gst+"</td><td>"+500+"</td></tr>";
+                          $('#dynamicItemTable tbody').append(itemsHTML);
+                        }
 					});
-					$('#dynamicItemTable tbody').append(itemsHTML);
-                    
+					
                 }
             })	
 		}
